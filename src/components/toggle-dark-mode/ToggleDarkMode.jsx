@@ -26,19 +26,19 @@ function ToggleDarkMode() {
       <ToggleButton value="light" size="small">
         <Box className="toggle_item">
           <LightModeIcon fontSize="small" />
-          <span>Sáng</span>
+          <span>Light</span>
         </Box>
       </ToggleButton>
       <ToggleButton value="system">
         <Box className="toggle_item">
           <SettingsBrightnessIcon fontSize="small" />
-          <span>Hệ thống</span>
+          <span>System</span>
         </Box>
       </ToggleButton>
       <ToggleButton value="dark">
         <Box className="toggle_item">
           <DarkModeOutlinedIcon fontSize="small" />
-          <span>Tối</span>
+          <span>Dark</span>
         </Box>
       </ToggleButton>
     </ToggleButtonGroup>

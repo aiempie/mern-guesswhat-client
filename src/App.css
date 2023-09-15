@@ -5,4 +5,6 @@
 .App {
   background-color: var(--mui-palette-secondary-contrastText);
   color: var(--mui-palette-secondary-main);
+  min-height: 100vh;
+  transition: 0.5s;
 }
