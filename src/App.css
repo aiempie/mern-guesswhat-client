@@ -1,0 +1,8 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+.App {
+  background-color: var(--mui-palette-secondary-contrastText);
+  color: var(--mui-palette-secondary-main);
+}
