@@ -1,13 +1,21 @@
 import "./App.css";
-import ToggleDarkMode from "~/components/toggle-dark-mode/ToggleDarkMode";
+import { BrowserRouter as Router } from "react-router-dom";
+import ScrollToTop from "./ScrollToTop";
+import Header from "./views/header/Header";
+import Footer from "./views/footer/Footer";
+import AppRouter from "./AppRouter";
 
 function App() {
   return (
-    <div className="App">
-      <h1>Hello world</h1>
-      <ToggleDarkMode />
-      <p>xin chào các bạn</p>
-    </div>
+    <Router>
+      <ScrollToTop>
+        <div className="App">
+          <Header />
+          <AppRouter />
+          <Footer />
+        </div>
+      </ScrollToTop>
+    </Router>
   );
 }
 
