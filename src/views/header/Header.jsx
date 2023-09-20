@@ -52,7 +52,7 @@ function Header() {
                 aria-haspopup="true"
                 aria-expanded={Boolean(anchorEl) ? "true" : undefined}
               >
-                <SettingsIcon color="secondary" />
+                <SettingsIcon sx={{ color: "#009688" }} />
               </IconButton>
             </Tooltip>
             <Menu

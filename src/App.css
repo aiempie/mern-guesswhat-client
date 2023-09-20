@@ -18,3 +18,10 @@ body {
   min-height: 100vh;
   transition: 0.5s;
 }
+.main_content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 80vh;
+  padding: 1rem;
+}

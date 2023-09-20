@@ -1,0 +1,52 @@
+.wrap-login {
+  max-width: 960px;
+  background: var(--mui-palette-background-paper);
+  min-height: 50vh;
+  opacity: 0.8;
+  border-radius: 1rem;
+  overflow: hidden;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4rem;
+  justify-content: space-between;
+  padding: 150px 90px 30px 90px;
+  .login-pic {
+    will-change: transform;
+    transform: perspective(300px) rotateX(0deg) rotateY(0deg);
+  }
+  .login-form {
+    width: 290px;
+  }
+}
+
+/* PC */
+@media (min-width: 1024px) {
+}
+
+/* Mobile - Tablet */
+@media (max-width: 1023px) {
+}
+
+/* Tablet */
+@media (min-width: 740px) and (max-width: 1023px) {
+  .wrap-login {
+    padding: 150px 80px 30px 80px;
+    .login-pic {
+      width: 35%;
+    }
+  }
+}
+
+/* Mobile */
+@media (max-width: 739px) {
+  .wrap-login {
+    padding: 100px 25px 10px;
+    .login-pic {
+      display: none;
+    }
+  }
+}
