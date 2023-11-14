@@ -23,11 +23,13 @@ import LockResetOutlinedIcon from "@mui/icons-material/LockResetOutlined";
 import AccountCircleOutlinedIcon from "@mui/icons-material/AccountCircleOutlined";
 import AlternateEmailIcon from "@mui/icons-material/AlternateEmail";
 import "./Register.scss";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import isValidEmail from "~/utils/isValidEmail";
+import { registerService } from "~/services/authService";
 
 function Register() {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
   const user = useSelector((state) => {
     return state.user;
   });
@@ -56,15 +58,20 @@ function Register() {
   const onChangeRegisterForm = (event) => {
     setAccount((prevAccount) => ({ ...prevAccount, [event.target.name]: event.target.value }));
   };
-  const handleRegisterSubmit = (event) => {
+  const handleRegisterSubmit = async (event) => {
     event.preventDefault();
     if (validateForm()) {
       setError();
       console.log(account);
+      const res = await registerService(dispatch, account);
+      if (res.data.success === false) {
+        setError(res.data.message);
+      }
     }
   };
   const validateForm = () => {
-    setErrors({ username: "", password: "", rePassword: "", fullname: "", email: "" });
+    let valid = true;
+    const newErrors = { username: "", password: "", rePassword: "", fullname: "", email: "" };
 
     if (!account.username) {
       setErrors((preError) => ({ ...preError, username: "Vui lòng nhập tài khoản" }));
@@ -99,6 +106,9 @@ function Register() {
       setErrors((preError) => ({ ...preError, rePassword: "Mật khẩu không khớp" }));
       return false;
     }
+
+    setErrors(newErrors);
+    return valid;
   };
 
   return (
