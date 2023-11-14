@@ -9,8 +9,8 @@ const userSlice = createSlice({
     setLoadBackdrop: (state) => {
       state.state = true;
     },
-    setBackdropFinish: (state) => {
-      state.state = false;
+    setBackdropFinish: (states) => {
+      states.state = false;
     },
   },
 });
