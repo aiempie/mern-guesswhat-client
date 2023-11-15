@@ -104,7 +104,7 @@ function Header() {
                     <Avatar src={user.userInfo.image} sx={{ bgcolor: bgColor.current }}>
                       {user.userInfo.fullname[0]}
                     </Avatar>{" "}
-                    Thông tin tài khoản
+                    {user.userInfo.fullname}
                   </MenuItem>
                   <MenuItem onClick={handleClickLogout}>
                     <ListItemIcon>

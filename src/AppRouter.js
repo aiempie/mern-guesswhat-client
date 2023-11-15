@@ -10,6 +10,7 @@ import Register from "./pages/register/Register";
 import PageNotFound from "./pages/404/PageNotFound";
 import { setBackdropFinish } from "./redux/slice/loadBackDropSlice";
 import { loadUser } from "./services/authService";
+import ForgotPW from "./pages/forgotPw/ForgotPW";
 
 function AppRouter() {
   const dispatch = useDispatch();
@@ -44,7 +45,8 @@ function AppRouter() {
             <Route index element={<Login />} />
             <Route path={linkTo.login} element={<Login />} />
             <Route path={linkTo.register} element={<Register />} />
-            <Route path={"*"} element={<Login />} />
+            <Route path={linkTo.forgotPw} element={<ForgotPW />} />
+            <Route path={"*"} element={<PageNotFound />} />
           </Routes>
         )}
 
