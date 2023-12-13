@@ -1,0 +1,16 @@
+.main_content {
+  .title {
+    text-align: center;
+    font-weight: 500;
+    font-size: 1.5rem;
+    span {
+      color: darkorange;
+    }
+  }
+  .aov_game {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+  }
+}

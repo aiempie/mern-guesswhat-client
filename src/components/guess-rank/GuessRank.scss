@@ -1,0 +1,11 @@
+.list_game_item {
+  border: 0;
+  cursor: pointer;
+  transition: all 0.1s ease-in-out;
+  max-width: 370px;
+  position: relative;
+  &:hover {
+    max-width: 105%;
+    transform: scale(1.05);
+  }
+}

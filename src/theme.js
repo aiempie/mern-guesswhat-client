@@ -1,4 +1,4 @@
-import { deepPurple, teal, cyan, indigo } from "@mui/material/colors";
+import { deepPurple, teal, cyan, lightBlue } from "@mui/material/colors";
 import { experimental_extendTheme as extendTheme } from "@mui/material/styles";
 
 // A custom theme for this app
@@ -7,7 +7,7 @@ const theme = extendTheme({
     light: {
       palette: {
         primary: deepPurple,
-        secondary: { ...indigo, contrastText: "rgba(0, 0, 0, 0.2)" },
+        secondary: { ...lightBlue, contrastText: "rgba(0, 0, 0, 0.4)" },
       },
     },
     dark: {
