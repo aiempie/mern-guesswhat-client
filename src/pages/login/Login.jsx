@@ -18,7 +18,7 @@ import PersonOutlineOutlinedIcon from "@mui/icons-material/PersonOutlineOutlined
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import { Link, useNavigate } from "react-router-dom";
 import NavigateNextIcon from "@mui/icons-material/NavigateNext";
-import linkTo from "~/utils/linkTo";
+import linkTo from "~/config/linkTo";
 import { Visibility, VisibilityOff } from "@mui/icons-material";
 import LockResetOutlinedIcon from "@mui/icons-material/LockResetOutlined";
 import { useDispatch, useSelector } from "react-redux";

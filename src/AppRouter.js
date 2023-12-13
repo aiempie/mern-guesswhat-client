@@ -5,12 +5,13 @@ import { useDispatch, useSelector } from "react-redux";
 import Home from "./pages/home/Home";
 import Login from "./pages/login/Login";
 import setAuthToken from "./utils/setAuthToken";
-import linkTo from "./utils/linkTo";
+import linkTo from "./config/linkTo";
 import Register from "./pages/register/Register";
 import PageNotFound from "./pages/404/PageNotFound";
 import { setBackdropFinish } from "./redux/slice/loadBackDropSlice";
 import { loadUser } from "./services/authService";
 import ForgotPW from "./pages/forgotPw/ForgotPW";
+import GameAOV from "./pages/gameAov/GameAOV";
 
 function AppRouter() {
   const dispatch = useDispatch();
@@ -38,6 +39,7 @@ function AppRouter() {
             <Route path={linkTo.home} element={<Home />} />
             <Route path={linkTo.login} element={<Login />} />
             <Route path={linkTo.register} element={<Register />} />
+            <Route path={linkTo.gameAov} element={<GameAOV />} />
             <Route path={"*"} element={<PageNotFound />} />
           </Routes>
         ) : (

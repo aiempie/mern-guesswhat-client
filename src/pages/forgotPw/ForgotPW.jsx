@@ -5,7 +5,7 @@ import { Tilt } from "react-tilt";
 import PersonOutlineOutlinedIcon from "@mui/icons-material/PersonOutlineOutlined";
 import { Link } from "react-router-dom";
 import NavigateNextIcon from "@mui/icons-material/NavigateNext";
-import linkTo from "~/utils/linkTo";
+import linkTo from "~/config/linkTo";
 import AlternateEmailIcon from "@mui/icons-material/AlternateEmail";
 import InputIcon from "@mui/icons-material/Input";
 import isValidEmail from "~/utils/isValidEmail";

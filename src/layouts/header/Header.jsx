@@ -23,7 +23,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Logout } from "@mui/icons-material";
 import LoginIcon from "@mui/icons-material/Login";
 import PersonAddAlt1Icon from "@mui/icons-material/PersonAddAlt1";
-import linkTo from "~/utils/linkTo";
+import linkTo from "~/config/linkTo";
 import { logoutService } from "~/services/authService";
 
 function Header() {

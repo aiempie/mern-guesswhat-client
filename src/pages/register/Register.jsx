@@ -17,7 +17,7 @@ import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import logoWeb from "~/assets/image/favicon.png";
 import NavigateBeforeIcon from "@mui/icons-material/NavigateBefore";
 import { Link, useNavigate } from "react-router-dom";
-import linkTo from "~/utils/linkTo";
+import linkTo from "~/config/linkTo";
 import { Visibility, VisibilityOff } from "@mui/icons-material";
 import LockResetOutlinedIcon from "@mui/icons-material/LockResetOutlined";
 import AccountCircleOutlinedIcon from "@mui/icons-material/AccountCircleOutlined";
