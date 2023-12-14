@@ -2,10 +2,11 @@ import { Avatar, ListItem, ListItemAvatar, ListItemText } from "@mui/material";
 import PlayCircleIcon from "@mui/icons-material/PlayCircle";
 import React from "react";
 import "./GuessRank.scss";
+import linkTo from "~/config/linkTo";
 
 function GuessRank({ handClick }) {
   const handClickCard = () => {
-    handClick("xem-clip-doan-rank");
+    handClick(linkTo.guessRank);
   };
   return (
     <ListItem className="list_game_item" onClick={() => handClickCard()}>
