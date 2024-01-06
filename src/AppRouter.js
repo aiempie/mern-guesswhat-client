@@ -52,7 +52,7 @@ function AppRouter() {
             <Route path={linkTo.login} element={<Login />} />
             <Route path={linkTo.register} element={<Register />} />
             <Route path={linkTo.forgotPw} element={<ForgotPW />} />
-            <Route path={"*"} element={<PageNotFound />} />
+            <Route path={"*"} element={<Login />} />
           </Routes>
         )}
 
