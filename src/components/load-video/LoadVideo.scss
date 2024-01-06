@@ -1,0 +1,48 @@
+.clip_player_wrapper {
+  aspect-ratio: 16/9;
+  background: #000;
+  border: 0;
+  margin: 0;
+  max-width: 1700px;
+  overflow: hidden;
+  padding: 0;
+  position: relative;
+  width: 80vh;
+  .player_wrapper {
+    background: #000;
+    overflow: hidden;
+    padding-top: 56.25%;
+    position: relative;
+    width: 100%;
+    .play_media {
+      background: transparent;
+      border: 0;
+      bottom: 0;
+      height: 100%;
+      left: 0;
+      margin: 0;
+      padding: 0;
+      position: absolute;
+      right: 0;
+      top: 0;
+      width: 100%;
+    }
+  }
+}
+.clip_credit {
+  margin: 1rem;
+  text-align: center;
+  font-size: 1.5rem;
+}
+
+@media only screen and (max-width: 768px) {
+  .clip_player_wrapper {
+    width: 80%;
+  }
+}
+
+@media only screen and (max-width: 1054px) {
+  .clip_player_wrapper {
+    width: 95%;
+  }
+}

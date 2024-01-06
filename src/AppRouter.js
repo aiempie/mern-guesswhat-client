@@ -12,7 +12,7 @@ import { setBackdropFinish } from "./redux/slice/loadBackDropSlice";
 import { loadUser } from "./services/authService";
 import ForgotPW from "./pages/forgotPw/ForgotPW";
 import GameAOV from "./pages/gameAov/GameAOV";
-import GuessRankAOV from "./pages/gameAov/guessRank/GuessRankAOV";
+import GuessRank from "./pages/guessRank/GuessRank";
 
 function AppRouter() {
   const dispatch = useDispatch();
@@ -42,7 +42,7 @@ function AppRouter() {
             <Route path={linkTo.register} element={<Register />} />
             <Route path={linkTo.gameAov}>
               <Route index element={<GameAOV />} />
-              <Route path={linkTo.guessRank} element={<GuessRankAOV />} />
+              <Route path={linkTo.guessRank} element={<GuessRank currentGame={"aov"} />} />
             </Route>
             <Route path={"*"} element={<PageNotFound />} />
           </Routes>

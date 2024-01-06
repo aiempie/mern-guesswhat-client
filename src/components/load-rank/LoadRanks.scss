@@ -1,0 +1,30 @@
+.ranks {
+  height: clamp(20px, 15vw, 80px);
+  display: flex;
+  margin-top: 5px;
+  max-width: 1700px;
+  width: 100%;
+
+  .ranks_container {
+    align-content: flex-start;
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    height: 100%;
+    justify-content: space-between;
+    width: 100%;
+  }
+
+  .rank_card_wrapper {
+    align-content: center;
+    align-items: center;
+    border-radius: 100%;
+    display: flex;
+    flex: 1 1;
+    flex-direction: column;
+    height: 100%;
+    justify-content: center;
+    position: relative;
+    transition: all 0.3s;
+  }
+}
