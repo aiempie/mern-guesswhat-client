@@ -21,6 +21,8 @@ import "./Header.scss";
 import ToggleDarkMode from "~/components/toggle-dark-mode/ToggleDarkMode";
 import { useDispatch, useSelector } from "react-redux";
 import { Logout } from "@mui/icons-material";
+import Badge from "@mui/material/Badge";
+
 import LoginIcon from "@mui/icons-material/Login";
 import PersonAddAlt1Icon from "@mui/icons-material/PersonAddAlt1";
 import MovieFilterIcon from "@mui/icons-material/MovieFilter";
@@ -110,10 +112,21 @@ function Header() {
               {user.userInfo ? (
                 <MenuList>
                   <MenuItem onClick={handleClickProfile}>
-                    <Avatar src={user.userInfo.image} sx={{ bgcolor: bgColor.current }}>
-                      {user.userInfo.fullname[0]}
-                    </Avatar>{" "}
-                    {user.userInfo.fullname}
+                    <Badge
+                      badgeContent={user.userInfo.playCount || 0}
+                      anchorOrigin={{
+                        vertical: "top",
+                        horizontal: "right",
+                      }}
+                      color="error"
+                      overlap="circular"
+                      showZero
+                    >
+                      <Avatar src={user.userInfo.image} sx={{ bgcolor: bgColor.current }}>
+                        {user.userInfo.fullname[0]}
+                      </Avatar>
+                    </Badge>
+                    <div style={{ marginLeft: "0.7rem" }}>{`${user.userInfo.fullname}`}</div>
                   </MenuItem>
                   <MenuItem onClick={handleClickLogout}>
                     <ListItemIcon>
