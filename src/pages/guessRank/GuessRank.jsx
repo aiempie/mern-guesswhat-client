@@ -11,6 +11,7 @@ import LoadRanks from "~/components/load-rank/LoadRanks";
 import { Button } from "@mui/material";
 import { loadUser } from "~/services/authService";
 import ResultDialog from "~/components/result-dialog/ResultDialog";
+import linkTo from "~/config/linkTo";
 
 function GuessRank({ currentGame }) {
   const dispatch = useDispatch();
@@ -125,12 +126,18 @@ function GuessRank({ currentGame }) {
     </>
   ) : (
     <div className="error_container">
-      <img src={errGif} alt="error-gif" />
-
+      <Link to={"/"}>
+        <img src={errGif} alt="error-gif" />
+      </Link>
       <div className="error">
         <h1>404</h1>
         <p>{`Ôi không! ${game.current.name} hiện đã hết clip`}</p>
-        <Link to={"/"}>Về trang chủ</Link>
+        <div className="flex justify-between">
+          <Link to={"/"}>Về trang chủ</Link>
+          <Link to={linkTo.submitClip} className="text-yellow-500" target="_blank">
+            Đóng góp Clip
+          </Link>
+        </div>
       </div>
     </div>
   );

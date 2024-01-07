@@ -23,6 +23,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Logout } from "@mui/icons-material";
 import LoginIcon from "@mui/icons-material/Login";
 import PersonAddAlt1Icon from "@mui/icons-material/PersonAddAlt1";
+import MovieFilterIcon from "@mui/icons-material/MovieFilter";
 import linkTo from "~/config/linkTo";
 import { logoutService } from "~/services/authService";
 
@@ -96,6 +97,14 @@ function Header() {
             >
               <MenuItem>
                 <ToggleDarkMode />
+              </MenuItem>
+              <MenuItem>
+                <ListItemIcon>
+                  <MovieFilterIcon />
+                </ListItemIcon>
+                <Link to={linkTo.submitClip} target="_blank">
+                  Đóng góp Clip
+                </Link>
               </MenuItem>
               <Divider />
               {user.userInfo ? (
