@@ -62,7 +62,6 @@ function Register() {
     event.preventDefault();
     if (validateForm()) {
       setError();
-      console.log(account);
       const res = await registerService(dispatch, account);
       if (res.data.success === false) {
         setError(res.data.message);
