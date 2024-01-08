@@ -9,8 +9,6 @@
     .avatar {
       position: relative;
       .avatar_image {
-        transform: translate(-50%, -30%);
-        left: 50%;
         transition: all 0.15s ease;
       }
     }
@@ -60,6 +58,8 @@
       max-width: 25%;
       .avatar_image {
         position: absolute;
+        transform: translate(-50%, -30%);
+        left: 50%;
       }
     }
   }
@@ -79,6 +79,9 @@
     flex: 0 0 33.33333%;
     max-width: 33.33333%;
   }
+  .profile_name {
+    margin: 1.5rem;
+  }
 }
 
 /* Tablet */
@@ -87,4 +90,15 @@
 
 /* Mobile */
 @media (max-width: 739px) {
+  .card_profile {
+    .card_profile_image {
+      .avatar_image {
+        top: -15px;
+        border: #adb5bd 3px solid;
+      }
+    }
+    .action {
+      top: -15px;
+    }
+  }
 }

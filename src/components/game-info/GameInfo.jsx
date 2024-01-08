@@ -10,7 +10,7 @@ function GameInfo({ gameName, score }) {
   }, [score]);
 
   return (
-    <Card className="flex items-center justify-around">
+    <Card className="flex items-center justify-around flex-wrap mb-4">
       <Box className="flex flex-col">
         <CardContent sx={{ flex: "1 0 auto" }}>
           <Typography component="div" variant="h5" color="secondary">

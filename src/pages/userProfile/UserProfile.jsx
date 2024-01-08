@@ -88,7 +88,7 @@ function UserProfile() {
               </div>
             </div>
           </div>
-          <div className="text-center mt-12">
+          <div className="text-center profile_name">
             <Typography variant="h4">{userProfile?.fullname}</Typography>
           </div>
           {aovProfile ? (
