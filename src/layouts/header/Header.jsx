@@ -106,7 +106,7 @@ function Header() {
                   <MovieFilterIcon />
                 </ListItemIcon>
                 <Link to={linkTo.submitClip} target="_blank">
-                  Đóng góp Clip
+                  Đóng góp Clip (+30 lượt chơi)
                 </Link>
               </MenuItem>
               <Divider />
