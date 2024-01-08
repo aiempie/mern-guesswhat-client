@@ -37,6 +37,17 @@ export const registerService = async (dispatch, account) => {
   }
 };
 
+export const getProfileService = async (id) => {
+  try {
+    const res = await axios.get(ApiUrl(`/auth/${id}`));
+    if (res.data.success) {
+      return res;
+    }
+  } catch (error) {
+    return error.response;
+  }
+};
+
 export const loadUser = async (dispatch) => {
   try {
     const res = await axios.get(ApiUrl("/auth/loaduser"));

@@ -5,6 +5,7 @@ const linkTo = {
   login: "/login",
   register: "/register",
   forgotPw: "/forgot-password",
+  userProfile: "/profile",
   gameAov: listGame.find((item) => item.id === "lq").section,
   gameLol: listGame.find((item) => item.id === "lm").section,
   gameCoc: listGame.find((item) => item.id === "coc").section,

@@ -56,7 +56,8 @@ function Header() {
     navigate(linkTo.register);
   };
   const handleClickProfile = () => {
-    console.log(bgColor);
+    handleSettingClose();
+    navigate(linkTo.userProfile);
   };
   return (
     <AppBar position="static">
@@ -187,7 +188,7 @@ const paperProps = {
     },
   },
 };
-const randomColor = () => {
+export const randomColor = () => {
   const listColor = [
     "#2196F3",
     "#4CAF50",

@@ -13,6 +13,7 @@ import { loadUser } from "./services/authService";
 import ForgotPW from "./pages/forgotPw/ForgotPW";
 import GameAOV from "./pages/gameAov/GameAOV";
 import GuessRank from "./pages/guessRank/GuessRank";
+import UserProfile from "./pages/userProfile/UserProfile";
 
 function AppRouter() {
   const dispatch = useDispatch();
@@ -40,6 +41,8 @@ function AppRouter() {
             <Route path={linkTo.home} element={<Home />} />
             <Route path={linkTo.login} element={<Login />} />
             <Route path={linkTo.register} element={<Register />} />
+            <Route path={linkTo.userProfile} element={<UserProfile />} />
+            <Route path={linkTo.userProfile + "/:id"} element={<UserProfile />} />
             <Route path={linkTo.gameAov}>
               <Route index element={<GameAOV />} />
               <Route path={linkTo.guessRank} element={<GuessRank currentGame={"aov"} />} />
