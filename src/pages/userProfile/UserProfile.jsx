@@ -91,12 +91,16 @@ function UserProfile() {
           <div className="text-center mt-12">
             <Typography variant="h4">{userProfile?.fullname}</Typography>
           </div>
-          <div className="border-t border-gray-300 pb-4">
-            <GameInfo
-              gameName={listGame.find((item) => item.id === "lq").name}
-              score={aovProfile?.score}
-            />
-          </div>
+          {aovProfile ? (
+            <div className="border-t border-gray-300 pb-4">
+              <GameInfo
+                gameName={listGame.find((item) => item.id === "lq").name}
+                score={aovProfile?.score}
+              />
+            </div>
+          ) : (
+            ""
+          )}
         </div>
       </Card>
     </Container>
