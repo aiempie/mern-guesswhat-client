@@ -11,7 +11,7 @@ const listGame = [
     name: "Liên Minh Huyền Thoại",
     section: "lol",
     image: "https://i.upanh.org/2023/12/13/lol9c33d7b9a88a6d61.jpeg",
-    isComming: false,
+    isComming: true,
   },
   {
     id: "coc",

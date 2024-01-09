@@ -2,7 +2,7 @@ import { Box, Card, CardContent, CardMedia, Rating, Typography } from "@mui/mate
 import React, { useEffect, useState } from "react";
 import loadLevel from "~/config/capTuTien";
 
-function GameInfo({ gameName, score }) {
+function GameInfo({ gameName, score, textColor }) {
   const [level, setLevel] = useState();
 
   useEffect(() => {
@@ -10,10 +10,11 @@ function GameInfo({ gameName, score }) {
   }, [score]);
 
   return (
-    <Card className="flex items-center justify-around flex-wrap mb-4">
+    <Card className="flex items-center justify-start flex-wrap mb-4">
+      <CardMedia component="img" sx={{ width: 150 }} image={level?.image} alt={level?.name} />
       <Box className="flex flex-col">
         <CardContent sx={{ flex: "1 0 auto" }}>
-          <Typography component="div" variant="h5" color="secondary">
+          <Typography component="div" variant="h5" color={textColor || "secondary"}>
             {gameName}
           </Typography>
           <Typography variant="subtitle1" color="text.secondary" component="div">
@@ -31,7 +32,6 @@ function GameInfo({ gameName, score }) {
           </Typography>
         </CardContent>
       </Box>
-      <CardMedia component="img" sx={{ width: 150 }} image={level?.image} alt={level?.name} />
     </Card>
   );
 }

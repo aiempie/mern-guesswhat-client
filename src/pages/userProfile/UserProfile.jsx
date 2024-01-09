@@ -20,6 +20,7 @@ function UserProfile() {
 
   const [userProfile, setUserProfile] = useState();
   const [aovProfile, setAovProfile] = useState();
+  const [lolProfile, setLolProfile] = useState();
 
   const bgColor = useRef(randomColor());
   useEffect(() => {
@@ -28,6 +29,7 @@ function UserProfile() {
       if (res.data.success) {
         setUserProfile(res.data.user);
         setAovProfile(res.data.aovScore);
+        setLolProfile(res.data.lolScore);
       }
     };
     if (id) {
@@ -126,6 +128,18 @@ function UserProfile() {
               <GameInfo
                 gameName={listGame.find((item) => item.id === "lq").name}
                 score={aovProfile?.score}
+                textColor="#d9be61"
+              />
+            </div>
+          ) : (
+            ""
+          )}
+          {lolProfile ? (
+            <div className="border-t border-gray-300 pb-4">
+              <GameInfo
+                gameName={listGame.find((item) => item.id === "lm").name}
+                score={lolProfile?.score}
+                textColor="#9320e5"
               />
             </div>
           ) : (
