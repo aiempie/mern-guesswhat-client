@@ -10,6 +10,7 @@ const linkTo = {
   gameLol: listGame.find((item) => item.id === "lm").section,
   gameCoc: listGame.find((item) => item.id === "coc").section,
   guessRank: "xem-clip-doan-rank",
+  chart: "bang-xep-hang",
   submitClip: "https://forms.gle/YAn8Tpotqk92wiN98",
 };
 export default linkTo;

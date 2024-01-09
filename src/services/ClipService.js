@@ -22,3 +22,14 @@ export const submitClip = async (game, clip_id, level) => {
     return error.response;
   }
 };
+
+export const topScoreService = async (game) => {
+  try {
+    const res = await axios.get(ApiUrl(`/${game}/play/chart`));
+    if (res.data.success) {
+      return res;
+    }
+  } catch (error) {
+    return error.response;
+  }
+};

@@ -2,7 +2,10 @@ import { Container, List, Typography } from "@mui/material";
 import React from "react";
 import "./GameAOV.scss";
 import { useNavigate } from "react-router-dom";
-import GuessRank from "~/components/guess-rank/GuessRank";
+import PlayCircleIcon from "@mui/icons-material/PlayCircle";
+import GameItem from "~/components/game-item/GameItem";
+import linkTo from "~/config/linkTo";
+import LeaderboardIcon from "@mui/icons-material/Leaderboard";
 
 function GameAOV() {
   let navigate = useNavigate();
@@ -18,7 +21,20 @@ function GameAOV() {
       </Typography>
       <Container className="aov_game">
         <List sx={{ width: "100%", maxWidth: 370 }}>
-          <GuessRank handClick={handClickCard} />
+          <GameItem
+            handClick={handClickCard}
+            headText="Xem clip"
+            contentText="Đoán mức rank của người chơi trong clip"
+            icon={<PlayCircleIcon sx={{ color: "#ff0" }} />}
+            linkTo={linkTo.guessRank}
+          />
+          <GameItem
+            handClick={handClickCard}
+            headText="Bảng xếp hạng"
+            contentText="Xem bảng xếp hạng người chơi LOL"
+            icon={<LeaderboardIcon sx={{ color: "#ff0" }} />}
+            linkTo={linkTo.chart}
+          />
         </List>
       </Container>
     </Container>

@@ -15,6 +15,7 @@ import GameAOV from "./pages/gameAov/GameAOV";
 import GuessRank from "./pages/guessRank/GuessRank";
 import UserProfile from "./pages/userProfile/UserProfile";
 import GameLol from "./pages/gameLol/GameLol";
+import Chart from "./pages/chart/Chart";
 
 function AppRouter() {
   const dispatch = useDispatch();
@@ -47,10 +48,12 @@ function AppRouter() {
             <Route path={linkTo.gameAov}>
               <Route index element={<GameAOV />} />
               <Route path={linkTo.guessRank} element={<GuessRank currentGame={"aov"} />} />
+              <Route path={linkTo.chart} element={<Chart currentGame={"aov"} />} />
             </Route>
             <Route path={linkTo.gameLol}>
               <Route index element={<GameLol />} />
               <Route path={linkTo.guessRank} element={<GuessRank currentGame={"lol"} />} />
+              <Route path={linkTo.chart} element={<Chart currentGame={"lol"} />} />
             </Route>
             <Route path={"*"} element={<PageNotFound />} />
           </Routes>

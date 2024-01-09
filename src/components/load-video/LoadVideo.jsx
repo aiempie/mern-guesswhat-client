@@ -16,7 +16,7 @@ function LoadVideo({ clip }) {
           ></CardMedia>
         </div>
       </div>
-      <h4 className="clip_credit">Credit: {clip.owner}</h4>
+      <h4 className="clip_credit">Người chơi: {clip.owner}</h4>
     </>
   );
 }

@@ -1,12 +1,10 @@
 import { Avatar, ListItem, ListItemAvatar, ListItemText } from "@mui/material";
-import PlayCircleIcon from "@mui/icons-material/PlayCircle";
 import React from "react";
 import "./GuessRank.scss";
-import linkTo from "~/config/linkTo";
 
-function GuessRank({ handClick }) {
+function GameItem({ handClick, headText, contentText, linkTo, icon }) {
   const handClickCard = () => {
-    handClick(linkTo.guessRank);
+    handClick(linkTo);
   };
   return (
     <ListItem className="list_game_item" onClick={() => handClickCard()}>
@@ -18,12 +16,12 @@ function GuessRank({ handClick }) {
             borderRadius: "50%",
           }}
         >
-          <PlayCircleIcon sx={{ color: "#ff0" }} />
+          {icon}
         </Avatar>
       </ListItemAvatar>
       <ListItemText
-        primary="Xem clip"
-        secondary="Đoán mức rank của người chơi trong clip"
+        primary={headText}
+        secondary={contentText}
         sx={{
           "color": "#fff",
           "& .MuiListItemText-secondary": {
@@ -36,4 +34,4 @@ function GuessRank({ handClick }) {
   );
 }
 
-export default GuessRank;
+export default GameItem;
