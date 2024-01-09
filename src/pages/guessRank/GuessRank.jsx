@@ -97,7 +97,7 @@ function GuessRank({ currentGame }) {
       <LoadVideo clip={clip} />
       <LoadRanks ranks={ranks} setSelect={setSelect} select={select} />
       <div className="buttons_wrapper">
-        <Button
+        {/* <Button
           size="large"
           variant="contained"
           color="error"
@@ -105,7 +105,7 @@ function GuessRank({ currentGame }) {
           onClick={() => reportClip()}
         >
           Báo cáo
-        </Button>
+        </Button> */}
         <Button
           size="large"
           variant="contained"
