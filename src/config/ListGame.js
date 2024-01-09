@@ -21,13 +21,6 @@ const listGame = [
     isComming: false,
   },
   {
-    id: "tc",
-    name: "Liên Minh Tốc Chiến",
-    section: "lolwr",
-    image: "https://i.upanh.org/2023/12/13/lol9c33d7b9a88a6d61.jpeg",
-    isComming: false,
-  },
-  {
     id: "pubgm",
     name: "PUBG Mobile",
     section: "pubgm",
