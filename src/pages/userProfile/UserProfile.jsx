@@ -1,16 +1,18 @@
 import React, { useEffect, useRef, useState } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
-import { getProfileService } from "~/services/authService";
+import { getProfileService, updateAvatarService } from "~/services/authService";
 import "./UserProfile.scss";
 import { randomColor } from "~/layouts/header/Header";
-import { Avatar, Button, Card, Container, Typography } from "@mui/material";
-import EditIcon from "@mui/icons-material/Edit";
+import { Avatar, Button, Card, Container, Typography, styled } from "@mui/material";
 import GameInfo from "~/components/game-info/GameInfo";
 import listGame from "~/config/ListGame";
+import CameraAltIcon from "@mui/icons-material/CameraAlt";
+import { uploadImage } from "~/services/uploadImageService";
 
 function UserProfile() {
   const { id } = useParams();
+  const dispatch = useDispatch();
 
   const user = useSelector((state) => {
     return state.user;
@@ -33,8 +35,29 @@ function UserProfile() {
     } else {
       fetchData(user.userInfo._id);
     }
-  }, [id, user.userInfo]);
+  }, [id, user]);
 
+  const handleAddAvatar = async (event) => {
+    const { name, files } = event.target;
+    if (name === "image" && files && files[0]) {
+      // Lưu ảnh tạm thời vào state dưới dạng Base64
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        const userConfirmed = window.confirm("Bạn có chắc chắn muốn thay đổi Avatar không?");
+        if (userConfirmed) {
+          saveImageAvatar(reader.result);
+        } else {
+        }
+      };
+      reader.readAsDataURL(files[0]);
+    }
+  };
+  const saveImageAvatar = async (image) => {
+    const res = await uploadImage(image);
+    if (res) {
+      updateAvatarService(dispatch, res);
+    }
+  };
   return (
     <Container>
       <Card
@@ -60,11 +83,18 @@ function UserProfile() {
                 {user?.userInfo._id === userProfile?._id ? (
                   <Button
                     className="float-right"
+                    component="label"
                     variant="contained"
                     color="success"
-                    startIcon={<EditIcon />}
+                    startIcon={<CameraAltIcon />}
                   >
-                    Edit
+                    Avatar
+                    <VisuallyHiddenInput
+                      name="image"
+                      type="file"
+                      accept="image/*"
+                      onChange={handleAddAvatar}
+                    />
                   </Button>
                 ) : (
                   ""
@@ -106,5 +136,16 @@ function UserProfile() {
     </Container>
   );
 }
+const VisuallyHiddenInput = styled("input")({
+  clip: "rect(0 0 0 0)",
+  clipPath: "inset(50%)",
+  height: 1,
+  overflow: "hidden",
+  position: "absolute",
+  bottom: 0,
+  left: 0,
+  whiteSpace: "nowrap",
+  width: 1,
+});
 
 export default UserProfile;

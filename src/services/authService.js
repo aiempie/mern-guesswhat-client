@@ -20,6 +20,7 @@ export const loginService = async (dispatch, account) => {
     return error.response;
   }
 };
+
 export const registerService = async (dispatch, account) => {
   dispatch(setLoadBackdrop());
   try {
@@ -32,6 +33,21 @@ export const registerService = async (dispatch, account) => {
     }
   } catch (error) {
     dispatch(clearUser());
+    dispatch(setBackdropFinish());
+    return error.response;
+  }
+};
+
+export const updateAvatarService = async (dispatch, image) => {
+  dispatch(setLoadBackdrop());
+  try {
+    const res = await axios.put(ApiUrl("/auth"), { image });
+    if (res.data.success) {
+      dispatch(setUserInfo(res.data.user));
+      dispatch(setBackdropFinish());
+      return res;
+    }
+  } catch (error) {
     dispatch(setBackdropFinish());
     return error.response;
   }
