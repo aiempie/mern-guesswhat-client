@@ -5,9 +5,14 @@ import { Avatar } from "@mui/material";
 import { randomColor } from "~/layouts/header/Header";
 import loadLevel from "~/config/capTuTien";
 import { topScoreService } from "~/services/ClipService";
+import { useNavigate } from "react-router-dom";
+import linkTo from "~/config/linkTo";
+import Loading from "~/components/loading/Loading";
 
 function Chart({ currentGame }) {
   const game = useRef(listGame.find((item) => item.section === currentGame));
+  const navigate = useNavigate();
+
   const [topScore, setTopScore] = useState();
   const [loading, setLoading] = useState(true);
 
@@ -26,17 +31,12 @@ function Chart({ currentGame }) {
     // eslint-disable-next-line
   }, []);
 
+  const handleClickItem = (id) => {
+    navigate(`${linkTo.userProfile}/${id}`);
+  };
+
   return loading ? (
-    <div
-      style={{
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-        height: "300px",
-      }}
-    >
-      <div className="spinner"></div>
-    </div>
+    <Loading />
   ) : (
     <div className="chart_table">
       <span>
@@ -47,7 +47,7 @@ function Chart({ currentGame }) {
           <div className="list_item">
             {topScore?.map((item, index) => {
               return (
-                <div className="item" key={index}>
+                <div className="item" key={index} onClick={() => handleClickItem(item._id)}>
                   <Avatar src={item.image} sx={{ bgcolor: randomColor(), width: 56, height: 56 }}>
                     {item.name[0]}
                   </Avatar>

@@ -12,6 +12,7 @@ import { Button } from "@mui/material";
 import { loadUser } from "~/services/authService";
 import ResultDialog from "~/components/result-dialog/ResultDialog";
 import linkTo from "~/config/linkTo";
+import Loading from "~/components/loading/Loading";
 
 function GuessRank({ currentGame }) {
   const dispatch = useDispatch();
@@ -82,16 +83,7 @@ function GuessRank({ currentGame }) {
   };
 
   return loading ? (
-    <div
-      style={{
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-        height: "300px",
-      }}
-    >
-      <div className="spinner"></div>
-    </div>
+    <Loading />
   ) : clip && ranks ? (
     <div>
       <LoadVideo clip={clip} />

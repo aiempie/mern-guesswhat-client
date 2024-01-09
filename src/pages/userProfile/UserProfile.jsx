@@ -9,6 +9,7 @@ import GameInfo from "~/components/game-info/GameInfo";
 import listGame from "~/config/ListGame";
 import CameraAltIcon from "@mui/icons-material/CameraAlt";
 import { uploadImage } from "~/services/uploadImageService";
+import Loading from "~/components/loading/Loading";
 
 function UserProfile() {
   const { id } = useParams();
@@ -21,15 +22,18 @@ function UserProfile() {
   const [userProfile, setUserProfile] = useState();
   const [aovProfile, setAovProfile] = useState();
   const [lolProfile, setLolProfile] = useState();
+  const [loading, setLoading] = useState(true);
 
   const bgColor = useRef(randomColor());
   useEffect(() => {
     const fetchData = async (userId) => {
+      setLoading(true);
       const res = await getProfileService(userId);
       if (res.data.success) {
         setUserProfile(res.data.user);
         setAovProfile(res.data.aovScore);
         setLolProfile(res.data.lolScore);
+        setLoading(false);
       }
     };
     if (id) {
@@ -60,7 +64,9 @@ function UserProfile() {
       updateAvatarService(dispatch, res);
     }
   };
-  return (
+  return loading ? (
+    <Loading />
+  ) : (
     <Container>
       <Card
         className="card_profile relative"
