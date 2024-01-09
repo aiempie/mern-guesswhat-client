@@ -25,6 +25,10 @@ body {
   min-height: 80vh;
   padding: 1rem;
 }
+.main_content > main {
+  display: flex;
+  justify-content: center;
+}
 .spinner {
   width: 11.2px;
   height: 11.2px;

@@ -93,7 +93,7 @@ function GuessRank({ currentGame }) {
       <div className="spinner"></div>
     </div>
   ) : clip && ranks ? (
-    <>
+    <div>
       <LoadVideo clip={clip} />
       <LoadRanks ranks={ranks} setSelect={setSelect} select={select} />
       <div className="buttons_wrapper">
@@ -123,7 +123,7 @@ function GuessRank({ currentGame }) {
           handleRefreshClip={handleRefreshClip}
         />
       </div>
-    </>
+    </div>
   ) : (
     <div className="error_container">
       <Link to={"/"}>
