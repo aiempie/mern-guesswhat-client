@@ -57,7 +57,7 @@ function Chart({ currentGame }) {
                         alt={`${index + 1}`}
                         src={`/static/top/${index + 1}.png`}
                         sx={{ bgcolor: `lightblue` }}
-                      />
+                      >{`${index + 1}`}</SmallAvatar>
                     }
                   >
                     <Avatar src={item.image} sx={{ bgcolor: randomColor(), width: 56, height: 56 }}>
