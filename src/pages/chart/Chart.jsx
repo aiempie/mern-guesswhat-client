@@ -55,7 +55,11 @@ function Chart({ currentGame }) {
                     badgeContent={
                       <SmallAvatar
                         alt={`${index + 1}`}
-                        src={`/static/top/${index + 1}.png`}
+                        src={
+                          index === 0 || index === 1 || index === 2
+                            ? `/static/top/${index + 1}.png`
+                            : ``
+                        }
                         sx={{ bgcolor: `lightblue` }}
                       >{`${index + 1}`}</SmallAvatar>
                     }
