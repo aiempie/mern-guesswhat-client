@@ -5,6 +5,7 @@ import PlayCircleIcon from "@mui/icons-material/PlayCircle";
 import GameItem from "~/components/game-item/GameItem";
 import linkTo from "~/config/linkTo";
 import LeaderboardIcon from "@mui/icons-material/Leaderboard";
+import QuizIcon from "@mui/icons-material/Quiz";
 
 function GameLol() {
   let navigate = useNavigate();
@@ -26,6 +27,13 @@ function GameLol() {
             contentText="Đoán mức rank của người chơi trong clip"
             icon={<PlayCircleIcon sx={{ color: "#ff0" }} />}
             linkTo={linkTo.guessRank}
+          />
+          <GameItem
+            handClick={handClickCard}
+            headText="Quiz"
+            contentText="Trả lời đúng câu hỏi và nhận phần thưởng"
+            icon={<QuizIcon sx={{ color: "#ff0" }} />}
+            linkTo={linkTo.quiz}
           />
           <GameItem
             handClick={handClickCard}

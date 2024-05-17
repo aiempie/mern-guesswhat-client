@@ -11,6 +11,7 @@ const linkTo = {
   gameCoc: listGame.find((item) => item.id === "coc").section,
   guessRank: "xem-clip-doan-rank",
   chart: "bang-xep-hang",
+  quiz: "quiz",
   submitClip: "https://forms.gle/YAn8Tpotqk92wiN98",
 };
 export default linkTo;
