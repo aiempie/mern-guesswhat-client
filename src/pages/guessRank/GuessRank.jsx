@@ -44,7 +44,7 @@ function GuessRank({ currentGame }) {
     // eslint-disable-next-line
   }, []);
 
-  const reportClip = () => {};
+  // const reportClip = () => {};
 
   const submit = async () => {
     if (user.userInfo.playCount <= 0) {
