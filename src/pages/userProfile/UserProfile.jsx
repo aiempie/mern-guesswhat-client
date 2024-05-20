@@ -59,10 +59,12 @@ function UserProfile() {
     }
   };
   const saveImageAvatar = async (image) => {
+    setLoading(true);
     const res = await uploadImage(image);
     if (res) {
       updateAvatarService(dispatch, res);
     }
+    setLoading(false);
   };
   return loading ? (
     <Loading />

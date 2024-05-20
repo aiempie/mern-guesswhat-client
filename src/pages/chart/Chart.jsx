@@ -48,10 +48,11 @@ function Chart({ currentGame }) {
           <div className="list_item">
             {topScore?.map((item, index) => {
               return (
-                <div className="item" key={index} onClick={() => handleClickItem(item._id)}>
+                <div className="item" key={index}>
                   <Badge
                     overlap="circular"
                     anchorOrigin={{ vertical: "bottom", horizontal: "right" }}
+                    onClick={() => handleClickItem(item._id)}
                     badgeContent={
                       <SmallAvatar
                         alt={`${index + 1}`}
@@ -63,6 +64,7 @@ function Chart({ currentGame }) {
                         sx={{ bgcolor: `lightblue` }}
                       >{`${index + 1}`}</SmallAvatar>
                     }
+                    sx={{ cursor: "pointer" }}
                   >
                     <Avatar src={item.image} sx={{ bgcolor: randomColor(), width: 56, height: 56 }}>
                       {item.name[0]}

@@ -2,7 +2,7 @@
   font-size: 2rem;
   margin-bottom: 1rem;
   text-shadow: 2px 4px 3px rgba(0, 0, 0, 0.3);
-  width: 80%;
+  width: 100%;
   max-width: 750px;
   .chart_background {
     display: flex;
@@ -33,7 +33,7 @@
       align-items: center;
       margin-bottom: 1rem;
       .text_item {
-        margin-left: 1.5rem;
+        margin-left: 2rem;
         text-align: start;
         .name_text_item {
           color: #cdcdcb;
@@ -45,4 +45,25 @@
       }
     }
   }
+}
+
+/* PC */
+@media (min-width: 1024px) {
+  .chart_table {
+    .chart_background {
+      width: 600px;
+    }
+  }
+}
+
+/* Mobile - Tablet */
+@media (max-width: 1023px) {
+}
+
+/* Tablet */
+@media (min-width: 740px) and (max-width: 1023px) {
+}
+
+/* Mobile */
+@media (max-width: 739px) {
 }
