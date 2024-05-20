@@ -14,7 +14,7 @@ export const getQuiz = async (game) => {
 
 export const submitQuiz = async (game, quiz_id, answer) => {
   try {
-    const res = await axios.post(ApiUrl(`/${game}/play/clip`), { quiz_id, answer });
+    const res = await axios.post(ApiUrl(`/${game}/play/quiz`), { quiz_id, chooseAnswer: answer });
     if (res.data.success) {
       return res;
     }

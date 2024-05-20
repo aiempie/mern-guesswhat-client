@@ -2,7 +2,7 @@ import { Button, Dialog, DialogActions, DialogContent, DialogTitle } from "@mui/
 import React from "react";
 import { useNavigate } from "react-router-dom";
 
-function ResultDialog({ isOpen, handleRefreshClip, result, onClose }) {
+function ResultDialog({ isOpen, handleRefresh, result, onClose }) {
   const navigate = useNavigate();
 
   const handleClose = () => {
@@ -10,7 +10,7 @@ function ResultDialog({ isOpen, handleRefreshClip, result, onClose }) {
     navigate("/");
   };
   return (
-    <Dialog open={isOpen} onClose={handleRefreshClip} fullWidth>
+    <Dialog open={isOpen} onClose={handleRefresh} fullWidth>
       <DialogTitle sx={{ color: result?.plusScore <= 0 ? "red" : "green" }}>
         {result?.plusScore <= 0 ? "Chia buồn!" : "Chúc mừng!"}
       </DialogTitle>
@@ -22,7 +22,7 @@ function ResultDialog({ isOpen, handleRefreshClip, result, onClose }) {
         {result?.isNoCount ? (
           ""
         ) : (
-          <Button onClick={handleRefreshClip} variant="contained" color="primary">
+          <Button onClick={handleRefresh} variant="contained" color="primary">
             Tiếp theo
           </Button>
         )}

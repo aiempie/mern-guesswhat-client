@@ -112,7 +112,7 @@ function GuessRank({ currentGame }) {
           isOpen={openDialog}
           result={result}
           onClose={onCloseDialog}
-          handleRefreshClip={handleRefreshClip}
+          handleRefresh={handleRefreshClip}
         />
       </div>
     </div>
