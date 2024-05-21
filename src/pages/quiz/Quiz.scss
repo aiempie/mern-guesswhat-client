@@ -4,6 +4,7 @@
 }
 
 .quiz {
+  width: 50vw;
   .question {
     font-size: x-large;
   }
@@ -11,8 +12,9 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    min-height: 30vh;
     img {
-      max-width: 60vw;
+      width: 50vw;
     }
   }
   .answer_list {
@@ -44,6 +46,9 @@
     justify-content: center;
     gap: 1rem;
     margin-top: clamp(1rem, 3vw, 1.7rem);
+    button {
+      width: auto;
+    }
   }
 }
 
@@ -68,21 +73,15 @@
 
 /* Mobile - Tablet */
 @media (max-width: 1023px) {
-  .quiz {
-    .image {
-      img {
-        max-width: 80vw;
-      }
-    }
-  }
 }
 
 /* Tablet */
 @media (min-width: 740px) and (max-width: 1023px) {
   .quiz {
+    width: 80vw;
     .image {
       img {
-        max-width: 90vw;
+        width: 80vw;
       }
     }
   }
@@ -90,4 +89,12 @@
 
 /* Mobile */
 @media (max-width: 739px) {
+  .quiz {
+    width: 90vw;
+    .image {
+      img {
+        width: 90vw;
+      }
+    }
+  }
 }

@@ -75,7 +75,11 @@ function Quiz({ currentGame }) {
   };
 
   const handleSelectAnswer = (ans) => {
-    setSelect(ans);
+    if (ans === select) {
+      setSelect("");
+    } else {
+      setSelect(ans);
+    }
   };
 
   const onCloseDialog = () => {
@@ -85,7 +89,9 @@ function Quiz({ currentGame }) {
     setSelect("");
   };
 
-  return (
+  return loading ? (
+    <Loading />
+  ) : quiz ? (
     <div>
       <Button
         className="back_button"
@@ -97,69 +103,61 @@ function Quiz({ currentGame }) {
       >
         Quay lại
       </Button>
-      {loading ? (
-        <Loading />
-      ) : quiz ? (
-        <div className="quiz">
-          {quiz.image ? (
-            <Box className="image">
-              <Box component="img" alt="Quiz Image" src={quiz.image}></Box>
-            </Box>
-          ) : (
-            ""
-          )}
-          <Box className="p-4 question">{quiz.question}</Box>
-          <Box className="p-4 answer_list">
-            {quiz.answer
-              ? quiz.answer.map((ans, index) => {
-                  return (
-                    <div
-                      className={`answer_item ${select === ans ? "active" : ""}`}
-                      key={index}
-                      onClick={() => handleSelectAnswer(ans)}
-                    >
-                      {ans}
-                    </div>
-                  );
-                })
-              : ""}
-          </Box>
-          <Box className="buttons_wrapper">
-            <Button
-              size="large"
-              variant="contained"
-              color="success"
-              sx={{ borderRadius: "20px", width: "clamp(75px,18vw,150px)" }}
-              disabled={select === ""}
-              onClick={() => submit()}
-            >
-              Xác Nhận
-            </Button>
-          </Box>
-          <ResultDialog
-            isOpen={openDialog}
-            result={result}
-            onClose={onCloseDialog}
-            handleRefresh={handleRefreshQuiz}
-          />
-        </div>
-      ) : (
-        <div className="error_container">
-          <Link to={"/"}>
-            <img src={errGif} alt="error-gif" />
+      <div className="quiz">
+        <Box className="image">
+          {quiz.image ? <Box component="img" alt="Quiz Image" src={quiz.image}></Box> : ""}
+        </Box>
+        <Box className="p-4 question">{quiz.question}</Box>
+        <Box className="p-4 answer_list">
+          {quiz.answer
+            ? quiz.answer.map((ans, index) => {
+                return (
+                  <div
+                    className={`answer_item ${select === ans ? "active" : ""}`}
+                    key={index}
+                    onClick={() => handleSelectAnswer(ans)}
+                  >
+                    {ans}
+                  </div>
+                );
+              })
+            : ""}
+        </Box>
+        <Box className="buttons_wrapper">
+          <Button
+            size="large"
+            variant="contained"
+            color="success"
+            sx={{ borderRadius: "20px", width: "clamp(75px,18vw,150px)" }}
+            disabled={select === ""}
+            onClick={() => submit()}
+          >
+            Xác Nhận
+          </Button>
+        </Box>
+        <ResultDialog
+          isOpen={openDialog}
+          result={result}
+          onClose={onCloseDialog}
+          handleRefresh={handleRefreshQuiz}
+        />
+      </div>
+    </div>
+  ) : (
+    <div className="error_container">
+      <Link to={"/"}>
+        <img src={errGif} alt="error-gif" />
+      </Link>
+      <div className="error">
+        <h1>404</h1>
+        <p>{`Ôi không! ${game.current.name} hiện đã hết câu hỏi`}</p>
+        <div className="flex justify-between">
+          <Link to={"/"}>Về trang chủ</Link>
+          <Link to={linkTo.submitClip} className="text-yellow-500" target="_blank">
+            Đóng góp Clip
           </Link>
-          <div className="error">
-            <h1>404</h1>
-            <p>{`Ôi không! ${game.current.name} hiện đã hết câu hỏi`}</p>
-            <div className="flex justify-between">
-              <Link to={"/"}>Về trang chủ</Link>
-              <Link to={linkTo.submitClip} className="text-yellow-500" target="_blank">
-                Đóng góp Clip
-              </Link>
-            </div>
-          </div>
         </div>
-      )}
+      </div>
     </div>
   );
 }

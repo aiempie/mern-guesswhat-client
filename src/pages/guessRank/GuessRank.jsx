@@ -3,7 +3,7 @@ import LoadVideo from "~/components/load-video/LoadVideo";
 import errGif from "~/assets/image/error.gif";
 import "./GuessRank.scss";
 import listGame from "~/config/ListGame";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { getRanks } from "~/services/RanksService";
 import { useDispatch, useSelector } from "react-redux";
 import { getClip, submitClip } from "~/services/ClipService";
@@ -16,6 +16,7 @@ import Loading from "~/components/loading/Loading";
 
 function GuessRank({ currentGame }) {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const user = useSelector((state) => {
     return state.user;
   });
@@ -86,10 +87,21 @@ function GuessRank({ currentGame }) {
     <Loading />
   ) : clip && ranks ? (
     <div>
-      <LoadVideo clip={clip} />
-      <LoadRanks ranks={ranks} setSelect={setSelect} select={select} />
-      <div className="buttons_wrapper">
-        {/* <Button
+      <Button
+        className="back_button"
+        size="large"
+        variant="contained"
+        color="success"
+        sx={{ borderRadius: "20px" }}
+        onClick={() => navigate(`/${game.current.section}`)}
+      >
+        Quay lại
+      </Button>
+      <div>
+        <LoadVideo clip={clip} />
+        <LoadRanks ranks={ranks} setSelect={setSelect} select={select} />
+        <div className="buttons_wrapper">
+          {/* <Button
           size="large"
           variant="contained"
           color="error"
@@ -98,22 +110,23 @@ function GuessRank({ currentGame }) {
         >
           Báo cáo
         </Button> */}
-        <Button
-          size="large"
-          variant="contained"
-          color="success"
-          sx={{ borderRadius: "20px", width: "clamp(75px,18vw,150px)" }}
-          disabled={select === 0}
-          onClick={() => submit()}
-        >
-          Xác Nhận
-        </Button>
-        <ResultDialog
-          isOpen={openDialog}
-          result={result}
-          onClose={onCloseDialog}
-          handleRefresh={handleRefreshClip}
-        />
+          <Button
+            size="large"
+            variant="contained"
+            color="success"
+            sx={{ borderRadius: "20px", width: "clamp(75px,18vw,150px)" }}
+            disabled={select === 0}
+            onClick={() => submit()}
+          >
+            Xác Nhận
+          </Button>
+          <ResultDialog
+            isOpen={openDialog}
+            result={result}
+            onClose={onCloseDialog}
+            handleRefresh={handleRefreshClip}
+          />
+        </div>
       </div>
     </div>
   ) : (

@@ -26,4 +26,7 @@
   justify-content: center;
   gap: 1rem;
   margin-top: clamp(1rem, 3vw, 1.7rem);
+  button {
+    width: auto;
+  }
 }
