@@ -23,6 +23,7 @@ function Quiz({ currentGame }) {
   const [openDialog, setOpenDialog] = useState(false);
   const [select, setSelect] = useState("");
   const [result, setResult] = useState({});
+  const [openHowto, setOpenHowto] = useState(false);
 
   const game = useRef(listGame.find((item) => item.section === currentGame));
 
@@ -89,20 +90,36 @@ function Quiz({ currentGame }) {
     setSelect("");
   };
 
+  const handleCloseHowto = () => {
+    setOpenHowto(false);
+  };
+
   return loading ? (
     <Loading />
   ) : quiz ? (
     <div>
-      <Button
-        className="back_button"
-        size="large"
-        variant="contained"
-        color="success"
-        sx={{ borderRadius: "20px" }}
-        onClick={() => navigate(`/${game.current.section}`)}
-      >
-        Quay lại
-      </Button>
+      <Box className="flex justify-between">
+        <Button
+          className="back_button"
+          size="large"
+          variant="contained"
+          color="info"
+          sx={{ borderRadius: "20px" }}
+          onClick={() => navigate(`/${game.current.section}`)}
+        >
+          Quay lại
+        </Button>
+        <Button
+          className="back_button"
+          size="large"
+          variant="contained"
+          color="success"
+          sx={{ borderRadius: "20px" }}
+          onClick={() => setOpenHowto(true)}
+        >
+          Cách chơi
+        </Button>
+      </Box>
       <div className="quiz">
         <Box className="image">
           {quiz.image ? <Box component="img" alt="Quiz Image" src={quiz.image}></Box> : ""}

@@ -8,11 +8,12 @@ import { getRanks } from "~/services/RanksService";
 import { useDispatch, useSelector } from "react-redux";
 import { getClip, submitClip } from "~/services/ClipService";
 import LoadRanks from "~/components/load-rank/LoadRanks";
-import { Button } from "@mui/material";
+import { Box, Button } from "@mui/material";
 import { loadUser } from "~/services/authService";
 import ResultDialog from "~/components/result-dialog/ResultDialog";
 import linkTo from "~/config/linkTo";
 import Loading from "~/components/loading/Loading";
+import GuessRankPlay from "./GuessRankPlay";
 
 function GuessRank({ currentGame }) {
   const dispatch = useDispatch();
@@ -27,6 +28,7 @@ function GuessRank({ currentGame }) {
   const [select, setSelect] = useState(0);
   const [result, setResult] = useState({});
   const [openDialog, setOpenDialog] = useState(false);
+  const [openHowto, setOpenHowto] = useState(false);
 
   const game = useRef(listGame.find((item) => item.section === currentGame));
 
@@ -83,20 +85,36 @@ function GuessRank({ currentGame }) {
     setSelect(0);
   };
 
+  const handleCloseHowto = () => {
+    setOpenHowto(false);
+  };
+
   return loading ? (
     <Loading />
   ) : clip && ranks ? (
     <div>
-      <Button
-        className="back_button"
-        size="large"
-        variant="contained"
-        color="success"
-        sx={{ borderRadius: "20px" }}
-        onClick={() => navigate(`/${game.current.section}`)}
-      >
-        Quay lại
-      </Button>
+      <Box className="flex justify-between">
+        <Button
+          className="back_button"
+          size="large"
+          variant="contained"
+          color="info"
+          sx={{ borderRadius: "20px" }}
+          onClick={() => navigate(`/${game.current.section}`)}
+        >
+          Quay lại
+        </Button>
+        <Button
+          className="back_button"
+          size="large"
+          variant="contained"
+          color="success"
+          sx={{ borderRadius: "20px" }}
+          onClick={() => setOpenHowto(true)}
+        >
+          Cách chơi
+        </Button>
+      </Box>
       <div>
         <LoadVideo clip={clip} />
         <LoadRanks ranks={ranks} setSelect={setSelect} select={select} />
@@ -128,6 +146,12 @@ function GuessRank({ currentGame }) {
           />
         </div>
       </div>
+      <GuessRankPlay
+        game={game.current.name}
+        open={openHowto}
+        onClose={handleCloseHowto}
+        ranks={ranks}
+      />
     </div>
   ) : (
     <div className="error_container">

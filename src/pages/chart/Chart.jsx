@@ -44,7 +44,7 @@ function Chart({ currentGame }) {
         className="back_button"
         size="large"
         variant="contained"
-        color="success"
+        color="info"
         sx={{ borderRadius: "20px" }}
         onClick={() => navigate(`/${game.current.section}`)}
       >
