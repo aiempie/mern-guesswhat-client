@@ -64,20 +64,19 @@ function Header() {
       <Container maxWidth="xl">
         <Toolbar className="tool_bar">
           <Link to="/" className="logo">
-            <marquee>
-              <CardMedia
-                component="img"
-                sx={{
-                  height: "60px",
-                  width: "300px",
-                  objectFit: "contain",
-                  marginLeft: "10px",
-                }}
-                image={logo}
-                alt={"Guess What"}
-                title="Home"
-              ></CardMedia>
-            </marquee>
+            <CardMedia
+              component="img"
+              className="logo_img"
+              sx={{
+                height: "60px",
+                width: "300px",
+                objectFit: "contain",
+                marginLeft: "10px",
+              }}
+              image={logo}
+              alt={"Guess What"}
+              title="Home"
+            ></CardMedia>
           </Link>
           <Box>
             <Tooltip title="Settings">

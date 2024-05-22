@@ -10,7 +10,7 @@ body {
   background-repeat: no-repeat;
   position: relative;
   width: 100vw;
-  overflow-y: hidden;
+  overflow-x: hidden;
   z-index: 1;
 }
 .App {
@@ -43,5 +43,34 @@ body {
 @keyframes spinner-z355kx {
   to {
     transform: rotate(360deg);
+  }
+}
+
+@-moz-keyframes marquee {
+  0% {
+    -moz-transform: translateX(100vw);
+  }
+  100% {
+    -moz-transform: translateX(-110%);
+  }
+}
+@-webkit-keyframes marquee {
+  0% {
+    -webkit-transform: translateX(100vw);
+  }
+  100% {
+    -webkit-transform: translateX(-110%);
+  }
+}
+@keyframes marquee {
+  0% {
+    -moz-transform: translateX(100vw); /* Firefox bug fix */
+    -webkit-transform: translateX(100vw); /* Firefox bug fix */
+    transform: translateX(100vw);
+  }
+  100% {
+    -moz-transform: translateX(-110%); /* Firefox bug fix */
+    -webkit-transform: translateX(-110%); /* Firefox bug fix */
+    transform: translateX(-110%);
   }
 }

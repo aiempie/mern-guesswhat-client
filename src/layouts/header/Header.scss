@@ -6,6 +6,18 @@
     transform: scale(1);
     width: 100%;
     transition: all 0.5s ease-in-out;
+
+    .logo_img {
+      /* Starting position */
+      -moz-transform: translateX(100%);
+      -webkit-transform: translateX(100%);
+      transform: translateX(100%);
+
+      /* Apply animation to this element */
+      -moz-animation: marquee 5s linear infinite;
+      -webkit-animation: marquee 5s linear infinite;
+      animation: marquee 10s linear infinite;
+    }
     &:hover {
       max-height: 115%;
       transform: scale(1.15);
