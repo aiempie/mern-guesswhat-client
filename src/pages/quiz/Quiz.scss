@@ -12,9 +12,14 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    min-height: 30vh;
+    max-height: 50vh;
+    width: 50vw;
+    border-radius: 10px;
+    overflow: hidden;
     img {
-      width: 50vw;
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
     }
   }
   .answer_list {
@@ -80,9 +85,7 @@
   .quiz {
     width: 80vw;
     .image {
-      img {
-        width: 80vw;
-      }
+      width: 80vw;
     }
   }
 }
@@ -92,9 +95,7 @@
   .quiz {
     width: 90vw;
     .image {
-      img {
-        width: 90vw;
-      }
+      width: 90vw;
     }
   }
 }

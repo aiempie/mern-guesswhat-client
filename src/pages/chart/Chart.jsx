@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import listGame from "~/config/ListGame";
 import "./Chart.scss";
-import { Avatar, Badge, Button } from "@mui/material";
+import { Avatar, Badge, Box, Button } from "@mui/material";
 import { randomColor } from "~/layouts/header/Header";
 import loadLevel from "~/config/capTuTien";
 import { topScoreService } from "~/services/ClipService";
@@ -9,6 +9,7 @@ import { useNavigate } from "react-router-dom";
 import linkTo from "~/config/linkTo";
 import Loading from "~/components/loading/Loading";
 import { styled } from "@mui/material/styles";
+import loadBadge from "~/config/rankBadge";
 
 function Chart({ currentGame }) {
   const game = useRef(listGame.find((item) => item.section === currentGame));
@@ -23,7 +24,7 @@ function Chart({ currentGame }) {
     const fetchData = async () => {
       const res = await topScoreService(SECCTION);
       if (res.data.success) {
-        setTopScore(res.data.topScores);
+        setTopScore(loadBadge(res.data.topScores));
         setLoading(false);
       }
     };
@@ -62,7 +63,7 @@ function Chart({ currentGame }) {
                   <div className="item" key={index}>
                     <Badge
                       overlap="circular"
-                      anchorOrigin={{ vertical: "bottom", horizontal: "right" }}
+                      anchorOrigin={{ vertical: "bottom", horizontal: "left" }}
                       onClick={() => handleClickItem(item._id)}
                       badgeContent={
                         <SmallAvatar
@@ -77,12 +78,33 @@ function Chart({ currentGame }) {
                       }
                       sx={{ cursor: "pointer" }}
                     >
-                      <Avatar
-                        src={item.image}
-                        sx={{ bgcolor: randomColor(), width: 56, height: 56 }}
-                      >
-                        {item.name[0]}
-                      </Avatar>
+                      <Box position="relative" display="inline-block">
+                        <img
+                          src={item.badge}
+                          alt={item.name}
+                          style={{
+                            width: 96,
+                            height: 96,
+                            position: "relative",
+                            zIndex: 1,
+                          }}
+                        />
+                        <Avatar
+                          src={item.image}
+                          alt="Avatar"
+                          sx={{
+                            bgcolor: randomColor(),
+                            width: 56,
+                            height: 56,
+                            position: "absolute",
+                            top: "50%",
+                            left: "50%",
+                            transform: "translate(-50%, -50%)",
+                          }}
+                        >
+                          {item.name[0]}
+                        </Avatar>
+                      </Box>
                     </Badge>
                     <div className="text_item">
                       <div className="name_text_item">{`${item.name}`}</div>

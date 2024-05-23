@@ -12,6 +12,7 @@ const linkTo = {
   guessRank: "xem-clip-doan-rank",
   chart: "bang-xep-hang",
   quiz: "quiz",
+  submitQuiz: "gui-cau-do",
   submitClip: "https://forms.gle/YAn8Tpotqk92wiN98",
 };
 export default linkTo;

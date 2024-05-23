@@ -20,6 +20,8 @@ import {
 } from "@mui/material";
 import CheckCircleIcon from "@mui/icons-material/CheckCircle";
 import DoDisturbOffIcon from "@mui/icons-material/DoDisturbOff";
+import { Link } from "react-router-dom";
+import linkTo from "~/config/linkTo";
 
 function GuessRankPlay({ game, open, onClose, ranks }) {
   return (
@@ -32,25 +34,25 @@ function GuessRankPlay({ game, open, onClose, ranks }) {
         <List>
           <ListItem>
             <ListItemIcon>
-              <CheckCircleIcon />
+              <CheckCircleIcon color="success" />
             </ListItemIcon>
             <ListItemText primary="Thu thập điểm số dựa trên lựa chọn của bạn." />
           </ListItem>
           <ListItem>
             <ListItemIcon>
-              <CheckCircleIcon />
+              <CheckCircleIcon color="success" />
             </ListItemIcon>
             <ListItemText primary="Đoán chính xác rank được cộng 5 điểm." />
           </ListItem>
           <ListItem>
             <ListItemIcon>
-              <CheckCircleIcon />
+              <CheckCircleIcon color="success" />
             </ListItemIcon>
             <ListItemText primary="Đoán đúng trong khoảng 1 rank chênh lệch được cộng 2 điểm." />
           </ListItem>
           <ListItem>
             <ListItemIcon>
-              <DoDisturbOffIcon />
+              <DoDisturbOffIcon color="error" />
             </ListItemIcon>
             <ListItemText primary="Đoán sai sẽ bị trừ 3 điểm." />
           </ListItem>
@@ -155,6 +157,12 @@ function GuessRankPlay({ game, open, onClose, ranks }) {
             </TableRow>
           </TableBody>
         </Table>
+        <Typography variant="body1" sx={{ marginTop: "1rem" }} align="center">
+          Gửi hightlight của bạn cho chúng tôi và nhận về 30 lượt chơi mới tại{" "}
+          <Link className="font-bold text-blue-500" target="_blank" to={linkTo.submitClip}>
+            đây!
+          </Link>
+        </Typography>
       </DialogContent>
       <DialogActions>
         <Button onClick={onClose} variant="contained" color="success">
