@@ -26,6 +26,7 @@
   },
   "devDependencies": {
     "babel-plugin-module-resolver": "^5.0.0",
+    "cross-env": "^7.0.3",
     "customize-cra": "^1.0.0",
     "node-sass": "^9.0.0",
     "react-app-rewired": "^2.2.1"
