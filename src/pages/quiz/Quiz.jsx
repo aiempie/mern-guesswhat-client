@@ -11,6 +11,7 @@ import { getQuiz, submitQuiz } from "~/services/QuizService";
 import { loadUser } from "~/services/authService";
 import "./Quiz.scss";
 import setAuthToken from "~/utils/setAuthToken";
+import QuizzPlay from "./QuizzPlay";
 
 function Quiz({ currentGame }) {
   const dispatch = useDispatch();
@@ -159,6 +160,7 @@ function Quiz({ currentGame }) {
           handleRefresh={handleRefreshQuiz}
         />
       </div>
+      <QuizzPlay game={game.current} open={openHowto} onClose={handleCloseHowto} />
     </div>
   ) : (
     <div className="error_container">

@@ -17,6 +17,7 @@ import UserProfile from "./pages/userProfile/UserProfile";
 import GameLol from "./pages/gameLol/GameLol";
 import Chart from "./pages/chart/Chart";
 import Quiz from "./pages/quiz/Quiz";
+import Submit from "./pages/submitResource/Submit";
 
 function AppRouter() {
   const dispatch = useDispatch();
@@ -51,12 +52,14 @@ function AppRouter() {
               <Route path={linkTo.guessRank} element={<GuessRank currentGame={"aov"} />} />
               <Route path={linkTo.chart} element={<Chart currentGame={"aov"} />} />
               <Route path={linkTo.quiz} element={<Quiz currentGame={"aov"} />} />
+              <Route path={linkTo.submitQuiz} element={<Submit currentGame={"aov"} />} />
             </Route>
             <Route path={linkTo.gameLol}>
               <Route index element={<GameLol />} />
               <Route path={linkTo.guessRank} element={<GuessRank currentGame={"lol"} />} />
               <Route path={linkTo.chart} element={<Chart currentGame={"lol"} />} />
               <Route path={linkTo.quiz} element={<Quiz currentGame={"lol"} />} />
+              <Route path={linkTo.submitQuiz} element={<Submit currentGame={"lol"} />} />
             </Route>
             <Route path={"*"} element={<PageNotFound />} />
           </Routes>
