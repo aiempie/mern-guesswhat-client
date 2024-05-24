@@ -7,8 +7,9 @@ import r6 from "~/assets/rank/r6.svg";
 import r7 from "~/assets/rank/r7.svg";
 import r8 from "~/assets/rank/r8.svg";
 import r9 from "~/assets/rank/r9.svg";
+import r10 from "~/assets/rank/r10.png";
 
-const rankBadge = [r1, r2, r3, r4, r5, r6, r7, r8, r9];
+const rankBadge = [r1, r2, r3, r4, r5, r6, r7, r8, r9, r10];
 
 const loadBadge = (list) => {
   if (!Array.isArray(list)) {
