@@ -85,9 +85,9 @@ function Submit({ currentGame }) {
     if (param.image.includes("data:image")) {
       param.image = await uploadImage(param.image);
     }
-    const res = sendQuiz(param);
-    console.log(res);
-    if (res.data.success) {
+    const res = await sendQuiz(param);
+    if (res.success) {
+      console.log(res.message);
     }
     dispatch(setBackdropFinish());
   };

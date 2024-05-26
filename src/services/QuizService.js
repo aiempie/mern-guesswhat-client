@@ -27,7 +27,7 @@ export const sendQuiz = async (quiz) => {
   try {
     const res = await axios.post(ApiUrl(`/user/add-quiz/`), quiz);
     if (res.data.success) {
-      return res;
+      return res.data;
     }
   } catch (error) {
     return error.response;
