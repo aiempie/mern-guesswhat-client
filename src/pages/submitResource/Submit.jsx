@@ -20,6 +20,7 @@ import Slide from "@mui/material/Slide";
 import { setBackdropFinish, setLoadBackdrop } from "~/redux/slice/loadBackDropSlice";
 import { uploadImage } from "~/services/uploadImageService";
 import { sendQuiz } from "~/services/QuizService";
+import SnackbarAlert from "~/components/snackbar-alert/snackbarAlert";
 
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
@@ -41,6 +42,8 @@ function Submit({ currentGame }) {
     incorrectAnswers: "",
   });
   const [openDialog, setOpenDialog] = useState(false);
+  const [textSnackbar, setTextSnackbar] = useState({ text: "Đang xử lý !", severity: "success" });
+  const [openSnackbar, setOpenSnackbar] = useState(false);
 
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -74,22 +77,48 @@ function Submit({ currentGame }) {
       setOpenDialog(true);
     }
   };
+  const handleRefreshData = () => {
+    handleRemoveImage();
+    setQuizData((preC) => {
+      return { ...preC, question: "", correctAnswer: "", incorrectAnswers: "", image: "" };
+    });
+  };
 
   const handleSave = async () => {
     dispatch(setLoadBackdrop());
-    const param = {
-      ...quizData,
-      incorrectAnswers: quizData.incorrectAnswers.split("\n"),
-      game: game.current.name,
-    };
-    if (param.image.includes("data:image")) {
-      param.image = await uploadImage(param.image);
+    try {
+      const param = {
+        ...quizData,
+        incorrectAnswers: quizData.incorrectAnswers.split("\n"),
+        game: game.current.section,
+      };
+      if (param.image.includes("data:image")) {
+        const res = await uploadImage(param.image);
+        if (res.response) {
+          setTextSnackbar({ text: "Đã xảy ra lỗi khi lưu ảnh!", severity: "error" });
+          setOpenDialog(false);
+          setOpenSnackbar(true);
+          handleRefreshData();
+          dispatch(setBackdropFinish());
+          return;
+        }
+        param.image = res;
+      }
+      const res = await sendQuiz(param);
+      if (res.success) {
+        setTextSnackbar({ text: res.message, severity: "success" });
+      }
+    } catch (error) {
+      setTextSnackbar({
+        text: "Đã xảy ra lỗi khi gửi quiz. Liên hệ quản trị viên và thử lại!",
+        severity: "error",
+      });
+    } finally {
+      setOpenDialog(false);
+      setOpenSnackbar(true);
+      handleRefreshData();
+      dispatch(setBackdropFinish());
     }
-    const res = await sendQuiz(param);
-    if (res.success) {
-      console.log(res.message);
-    }
-    dispatch(setBackdropFinish());
   };
 
   const handleCloseDialog = () => {
@@ -203,6 +232,12 @@ function Submit({ currentGame }) {
           </Button>
         </DialogActions>
       </Dialog>
+      <SnackbarAlert
+        open={openSnackbar}
+        setOpen={setOpenSnackbar}
+        severity={textSnackbar.severity}
+        text={textSnackbar.text}
+      />
     </Paper>
   );
 }
