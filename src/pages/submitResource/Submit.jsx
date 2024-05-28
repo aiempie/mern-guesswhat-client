@@ -86,17 +86,19 @@ function Submit({ currentGame }) {
 
   const handleSave = async () => {
     dispatch(setLoadBackdrop());
+    setOpenDialog(false);
     try {
       const param = {
         ...quizData,
         incorrectAnswers: quizData.incorrectAnswers.split("\n"),
         game: game.current.section,
       };
+
       if (param.image.includes("data:image")) {
         const res = await uploadImage(param.image);
         if (res.response) {
           setTextSnackbar({ text: "Đã xảy ra lỗi khi lưu ảnh!", severity: "error" });
-          setOpenDialog(false);
+
           setOpenSnackbar(true);
           handleRefreshData();
           dispatch(setBackdropFinish());
@@ -114,7 +116,6 @@ function Submit({ currentGame }) {
         severity: "error",
       });
     } finally {
-      setOpenDialog(false);
       setOpenSnackbar(true);
       handleRefreshData();
       dispatch(setBackdropFinish());
