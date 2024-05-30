@@ -12,6 +12,7 @@ import {
   MenuList,
   Toolbar,
   Tooltip,
+  Badge,
 } from "@mui/material";
 import React, { useRef, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
@@ -21,8 +22,6 @@ import "./Header.scss";
 import ToggleDarkMode from "~/components/toggle-dark-mode/ToggleDarkMode";
 import { useDispatch, useSelector } from "react-redux";
 import { Logout } from "@mui/icons-material";
-import Badge from "@mui/material/Badge";
-
 import LoginIcon from "@mui/icons-material/Login";
 import PersonAddAlt1Icon from "@mui/icons-material/PersonAddAlt1";
 import MovieFilterIcon from "@mui/icons-material/MovieFilter";
@@ -32,33 +31,38 @@ import { logoutService } from "~/services/authService";
 function Header() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const user = useSelector((state) => {
-    return state.user;
-  });
+  const user = useSelector((state) => state.user);
   const [anchorEl, setAnchorEl] = useState(null);
   const bgColor = useRef(randomColor());
+
   const handleSettingClick = (event) => {
     setAnchorEl(event.currentTarget);
   };
+
   const handleSettingClose = () => {
     setAnchorEl(null);
   };
+
   const handleClickLogout = () => {
     logoutService(dispatch);
     handleSettingClose();
   };
+
   const handleClickLogin = () => {
     handleSettingClose();
     navigate(linkTo.login);
   };
+
   const handleClickRegister = () => {
     handleSettingClose();
     navigate(linkTo.register);
   };
+
   const handleClickProfile = () => {
     handleSettingClose();
     navigate(linkTo.userProfile);
   };
+
   return (
     <AppBar position="static">
       <Container maxWidth="xl">
@@ -76,7 +80,7 @@ function Header() {
               image={logo}
               alt={"Guess What"}
               title="Home"
-            ></CardMedia>
+            />
           </Link>
           <Box>
             <Tooltip title="Settings">
@@ -96,7 +100,34 @@ function Header() {
               id="setting-menu"
               open={Boolean(anchorEl)}
               onClose={handleSettingClose}
-              PaperProps={paperProps}
+              slotProps={{
+                paper: {
+                  elevation: 0,
+                  sx: {
+                    "overflow": "visible",
+                    "filter": "drop-shadow(0px 2px 8px rgba(0,0,0,0.32))",
+                    "mt": 1.5,
+                    "& .MuiAvatar-root": {
+                      width: 32,
+                      height: 32,
+                      ml: -0.5,
+                      mr: 1,
+                    },
+                    "&:before": {
+                      content: '""',
+                      display: "block",
+                      position: "absolute",
+                      top: 0,
+                      right: 14,
+                      width: 10,
+                      height: 10,
+                      bgcolor: "background.paper",
+                      transform: "translateY(-50%) rotate(45deg)",
+                      zIndex: 0,
+                    },
+                  },
+                },
+              }}
               transformOrigin={{ horizontal: "right", vertical: "top" }}
               anchorOrigin={{ horizontal: "right", vertical: "bottom" }}
             >
@@ -164,32 +195,6 @@ function Header() {
 
 export default Header;
 
-const paperProps = {
-  elevation: 0,
-  sx: {
-    "overflow": "visible",
-    "filter": "drop-shadow(0px 2px 8px rgba(0,0,0,0.32))",
-    "mt": 1.5,
-    "& .MuiAvatar-root": {
-      width: 32,
-      height: 32,
-      ml: -0.5,
-      mr: 1,
-    },
-    "&:before": {
-      content: '""',
-      display: "block",
-      position: "absolute",
-      top: 0,
-      right: 14,
-      width: 10,
-      height: 10,
-      bgcolor: "background.paper",
-      transform: "translateY(-50%) rotate(45deg)",
-      zIndex: 0,
-    },
-  },
-};
 export const randomColor = () => {
   const listColor = [
     "#2196F3",
