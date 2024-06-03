@@ -13,6 +13,7 @@ const linkTo = {
   chart: "bang-xep-hang",
   quiz: "quiz",
   submitQuiz: "gui-cau-do",
+  getPoint: "lay-them-diem",
   submitClip: "https://forms.gle/YAn8Tpotqk92wiN98",
 };
 export default linkTo;

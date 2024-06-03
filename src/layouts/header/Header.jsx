@@ -27,6 +27,8 @@ import PersonAddAlt1Icon from "@mui/icons-material/PersonAddAlt1";
 import MovieFilterIcon from "@mui/icons-material/MovieFilter";
 import linkTo from "~/config/linkTo";
 import { logoutService } from "~/services/authService";
+import Diversity1Icon from "@mui/icons-material/Diversity1";
+import { pink } from "@mui/material/colors";
 
 function Header() {
   const dispatch = useDispatch();
@@ -61,6 +63,10 @@ function Header() {
   const handleClickProfile = () => {
     handleSettingClose();
     navigate(linkTo.userProfile);
+  };
+  const handleClickPGetPoint = () => {
+    handleSettingClose();
+    navigate(linkTo.getPoint);
   };
 
   return (
@@ -161,6 +167,12 @@ function Header() {
                       </Avatar>
                     </Badge>
                     <div style={{ marginLeft: "0.7rem" }}>{`${user.userInfo.fullname}`}</div>
+                  </MenuItem>
+                  <MenuItem onClick={handleClickPGetPoint}>
+                    <ListItemIcon>
+                      <Diversity1Icon fontSize="small" sx={{ color: pink[500] }} />
+                    </ListItemIcon>
+                    Nhận thêm điểm
                   </MenuItem>
                   <MenuItem onClick={handleClickLogout}>
                     <ListItemIcon>

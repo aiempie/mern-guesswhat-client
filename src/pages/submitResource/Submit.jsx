@@ -155,7 +155,7 @@ function Submit({ currentGame }) {
   return (
     <Paper elevation={8} className="submit_quiz">
       <Typography variant="h5" component="h5">
-        Nhập câu hỏi về {game.current.name} mà bạn tâm đắc!
+        Nhập câu hỏi về <strong>{game.current.name}</strong> mà bạn tâm đắc!
       </Typography>
       <TextField
         label="Câu hỏi"
@@ -202,7 +202,7 @@ function Submit({ currentGame }) {
         error={error.incorrectAnswers !== ""}
       />
       <Box className="flex justify-end gap-4">
-        <Button onClick={() => navigate(`/${game.current.section}`)}>Quay lại</Button>
+        <Button onClick={() => navigate(-1)}>Quay lại</Button>
         <Button onClick={handleConfirm} variant="contained" color="primary">
           Gửi
         </Button>

@@ -18,6 +18,7 @@ import GameLol from "./pages/gameLol/GameLol";
 import Chart from "./pages/chart/Chart";
 import Quiz from "./pages/quiz/Quiz";
 import Submit from "./pages/submitResource/Submit";
+import GetPoint from "./pages/getPoint/GetPoint";
 
 function AppRouter() {
   const dispatch = useDispatch();
@@ -45,6 +46,7 @@ function AppRouter() {
             <Route path={linkTo.home} element={<Home />} />
             <Route path={linkTo.login} element={<Login />} />
             <Route path={linkTo.register} element={<Register />} />
+            <Route path={linkTo.getPoint} element={<GetPoint />} />
             <Route path={linkTo.userProfile} element={<UserProfile />} />
             <Route path={linkTo.userProfile + "/:id"} element={<UserProfile />} />
             <Route path={linkTo.gameAov}>
