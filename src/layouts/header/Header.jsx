@@ -29,6 +29,7 @@ import linkTo from "~/config/linkTo";
 import { logoutService } from "~/services/authService";
 import Diversity1Icon from "@mui/icons-material/Diversity1";
 import { pink } from "@mui/material/colors";
+import SyncLockIcon from "@mui/icons-material/SyncLock";
 
 function Header() {
   const dispatch = useDispatch();
@@ -67,6 +68,10 @@ function Header() {
   const handleClickPGetPoint = () => {
     handleSettingClose();
     navigate(linkTo.getPoint);
+  };
+  const handleClickChangePassword = () => {
+    handleSettingClose();
+    navigate(linkTo.changePw);
   };
 
   return (
@@ -173,6 +178,12 @@ function Header() {
                       <Diversity1Icon fontSize="small" sx={{ color: pink[500] }} />
                     </ListItemIcon>
                     Nhận thêm điểm
+                  </MenuItem>
+                  <MenuItem onClick={handleClickChangePassword}>
+                    <ListItemIcon>
+                      <SyncLockIcon fontSize="small" color="primary" />
+                    </ListItemIcon>
+                    Thay đổi mật khẩu
                   </MenuItem>
                   <MenuItem onClick={handleClickLogout}>
                     <ListItemIcon>

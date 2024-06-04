@@ -20,6 +20,21 @@ export const loginService = async (dispatch, account) => {
     return error.response;
   }
 };
+export const changePasswordService = async (dispatch, password, newPassword) => {
+  dispatch(setLoadBackdrop());
+  try {
+    const res = await axios.post(ApiUrl("/auth/change-password"), { password, newPassword });
+    if (res.data.success) {
+      dispatch(setAssetToken(res.data.accessToken));
+      setAuthToken(res.data.accessToken);
+      dispatch(setBackdropFinish());
+      return res;
+    }
+  } catch (error) {
+    dispatch(setBackdropFinish());
+    return error.response;
+  }
+};
 
 export const registerService = async (dispatch, account) => {
   dispatch(setLoadBackdrop());

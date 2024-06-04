@@ -2,9 +2,10 @@ import listGame from "~/config/ListGame";
 
 const linkTo = {
   home: "/",
-  login: "/login",
-  register: "/register",
-  forgotPw: "/forgot-password",
+  login: "/dang-nhap",
+  register: "/dang-ky",
+  forgotPw: "/quen-mat-khau",
+  changePw: "/thay-doi-mat-khau",
   userProfile: "/profile",
   gameAov: listGame.find((item) => item.id === "lq").section,
   gameLol: listGame.find((item) => item.id === "lm").section,
@@ -13,7 +14,7 @@ const linkTo = {
   chart: "bang-xep-hang",
   quiz: "quiz",
   submitQuiz: "gui-cau-do",
-  getPoint: "lay-them-diem",
+  getPoint: "nhan-them-diem",
   submitClip: "https://forms.gle/YAn8Tpotqk92wiN98",
 };
 export default linkTo;
