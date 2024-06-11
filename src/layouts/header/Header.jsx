@@ -177,7 +177,7 @@ function Header() {
                     <ListItemIcon>
                       <Diversity1Icon fontSize="small" sx={{ color: pink[500] }} />
                     </ListItemIcon>
-                    Nhận thêm điểm
+                    Nhận thêm lượt chơi
                   </MenuItem>
                   <MenuItem onClick={handleClickChangePassword}>
                     <ListItemIcon>
