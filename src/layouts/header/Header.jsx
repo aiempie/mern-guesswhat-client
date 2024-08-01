@@ -30,6 +30,7 @@ import { logoutService } from "~/services/authService";
 import Diversity1Icon from "@mui/icons-material/Diversity1";
 import { pink } from "@mui/material/colors";
 import SyncLockIcon from "@mui/icons-material/SyncLock";
+import HomeIcon from "@mui/icons-material/Home";
 
 function Header() {
   const dispatch = useDispatch();
@@ -72,6 +73,10 @@ function Header() {
   const handleClickChangePassword = () => {
     handleSettingClose();
     navigate(linkTo.changePw);
+  };
+  const handleClickGoHome = () => {
+    handleSettingClose();
+    navigate(linkTo.home);
   };
 
   return (
@@ -144,6 +149,12 @@ function Header() {
             >
               <MenuItem>
                 <ToggleDarkMode />
+              </MenuItem>
+              <MenuItem onClick={handleClickGoHome}>
+                <ListItemIcon>
+                  <HomeIcon fontSize="small" sx={{ color: pink[200] }} />
+                </ListItemIcon>
+                Trang chủ
               </MenuItem>
               <MenuItem>
                 <ListItemIcon>
