@@ -1,12 +1,16 @@
 import aovIcon from "~/assets/image/aov.icon.jpeg";
 import lolIcon from "~/assets/image/lol.icon.png";
+import lolLogo from "~/assets/bg/lienminhhuyenthoai.jpg";
+import pubgLogo from "~/assets/bg/pubg.png";
+import cocLogo from "~/assets/bg/coc.jpg";
+import aovLogo from "~/assets/bg/aov.jpeg";
 
 const listGame = [
   {
     id: "lq",
     name: "Liên Quân Mobile",
     section: "aov",
-    image: "https://i.imgur.com/cXRItlH.jpg",
+    image: aovLogo,
     icon: aovIcon,
     isComming: true,
   },
@@ -14,7 +18,7 @@ const listGame = [
     id: "lm",
     name: "Liên Minh Huyền Thoại",
     section: "lol",
-    image: "https://i.upanh.org/2023/12/13/lol9c33d7b9a88a6d61.jpeg",
+    image: lolLogo,
     icon: lolIcon,
     isComming: true,
   },
@@ -22,16 +26,16 @@ const listGame = [
     id: "coc",
     name: "Clash Of Clans",
     section: "coc",
-    image: "https://i.upanh.org/2023/12/13/image07014a8803b80bc7.png",
-    icon: aovIcon,
+    image: cocLogo,
+    icon: "",
     isComming: false,
   },
   {
     id: "pubgm",
     name: "PUBG Mobile",
     section: "pubgm",
-    image: "https://img.upanh.tv/2024/01/09/image7cfe0a52ea51e355.png",
-    icon: aovIcon,
+    image: pubgLogo,
+    icon: "",
     isComming: false,
   },
 ];

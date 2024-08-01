@@ -57,7 +57,7 @@ function Login() {
     if (validateForm()) {
       setError();
       const res = await loginService(dispatch, account);
-      if (res.data.success === false) {
+      if (res?.data?.success === false) {
         setError(res.data.message);
       }
     }
