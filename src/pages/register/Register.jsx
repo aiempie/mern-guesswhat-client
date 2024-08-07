@@ -71,9 +71,15 @@ function Register() {
   const validateForm = () => {
     let valid = true;
     const newErrors = { username: "", password: "", rePassword: "", fullname: "", email: "" };
-
+    const usernameRegex = /^[a-zA-Z0-9._@-]{3,30}$/;
     if (!account.username) {
       setErrors((preError) => ({ ...preError, username: "Vui lòng nhập tài khoản" }));
+      return false;
+    } else if (!usernameRegex.test(account.username)) {
+      setErrors((preError) => ({
+        ...preError,
+        username: "Tài khoản phải có độ dài từ 3 đến 30 ký tự và chỉ chứa chữ cái và số.",
+      }));
       return false;
     }
 
