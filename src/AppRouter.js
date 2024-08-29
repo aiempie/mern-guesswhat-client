@@ -20,6 +20,7 @@ import Quiz from "./pages/quiz/Quiz";
 import Submit from "./pages/submitResource/Submit";
 import GetPoint from "./pages/getPoint/GetPoint";
 import ChangePassword from "./pages/changePw/ChangePassword";
+import Ads from "~/components/ads/Ads";
 
 function AppRouter() {
   const dispatch = useDispatch();
@@ -39,7 +40,10 @@ function AppRouter() {
     // eslint-disable-next-line
   }, [user.assetToken]);
   return (
-    <div className="main_content mt-2">
+    <div className="main_content mt-2 flex-grow">
+      <div className="left-slide">
+        <Ads />
+      </div>
       <main>
         {user.userInfo ? (
           <Routes>
@@ -84,6 +88,9 @@ function AppRouter() {
           <CircularProgress color="success" />
         </Backdrop>
       </main>
+      <div className="right-slide">
+        <div id="container-f61b6ad18d6ab23a2fae66facef9d005"></div>
+      </div>
     </div>
   );
 }

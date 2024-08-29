@@ -14,7 +14,7 @@ function App() {
       <PersistGate loading={null} persistor={persistor}>
         <Router>
           <ScrollToTop>
-            <div className="App">
+            <div className="App flex flex-col">
               <Header />
               <AppRouter />
               <Footer />
