@@ -21,7 +21,7 @@ function Ads() {
     runScripts();
     const intervalId = setInterval(() => {
       runScripts();
-    }, 60000);
+    }, 600000);
     return () => {
       clearInterval(intervalId);
     };
