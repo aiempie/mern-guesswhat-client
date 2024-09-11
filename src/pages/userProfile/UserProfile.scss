@@ -80,10 +80,13 @@
     max-width: 33.33333%;
   }
   .profile_name {
-    margin: 1.5rem;
+    padding: 1.5rem;
   }
 }
-
+.prev-avatar {
+  border-radius: 50%;
+  object-fit: cover;
+}
 /* Tablet */
 @media (min-width: 740px) and (max-width: 1023px) {
 }
@@ -100,5 +103,11 @@
     .action {
       top: -15px;
     }
+    .profile_name {
+      padding-bottom: 1rem;
+    }
+  }
+  .card-game {
+    justify-content: center;
   }
 }

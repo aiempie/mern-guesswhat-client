@@ -13,7 +13,7 @@ function GameInfo({ game, score, textColor }) {
   }, [score]);
 
   return (
-    <Card className="flex items-center justify-start flex-wrap mb-4">
+    <Card className="flex items-center justify-start flex-wrap mb-4 card-game">
       <Link to={`/${game.section}/${linkTo.chart}`}>
         <CardMedia
           component="img"

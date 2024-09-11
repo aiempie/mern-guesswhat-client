@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { Avatar, Button, Card, Container, Typography, styled } from "@mui/material";
+import Swal from "sweetalert2";
 import CameraAltIcon from "@mui/icons-material/CameraAlt";
 import { getProfileService, updateAvatarService } from "~/services/authService";
 import { uploadImage } from "~/services/uploadImageService";
@@ -54,10 +55,37 @@ function UserProfile() {
     const { name, files } = event.target;
     if (name === "image" && files && files[0]) {
       const reader = new FileReader();
-      reader.onloadend = () => {
-        const userConfirmed = window.confirm("Bạn có chắc chắn muốn thay đổi Avatar không?");
-        if (userConfirmed) {
-          saveImageAvatar(reader.result);
+      reader.onloadend = async () => {
+        // const userConfirmed = window.confirm("Bạn có chắc chắn muốn thay đổi Avatar không?");
+        // if (userConfirmed) {
+        //   saveImageAvatar(reader.result);
+        // }
+        const result = await Swal.fire({
+          title: "Thay đổi Avatar?",
+          text: "Bạn có chắc chắn muốn sử dụng hình ảnh này không!",
+          confirmButtonColor: "#2e7d32",
+          cancelButtonColor: "#d33",
+          showCancelButton: true,
+          confirmButtonText: "Đồng ý",
+          cancelButtonText: "Hủy",
+          imageUrl: reader.result,
+          imageHeight: 180,
+          imageWidth: 180,
+          imageAlt: "Avatar",
+          customClass: {
+            image: "prev-avatar",
+          },
+        });
+
+        if (result.isConfirmed) {
+          await saveImageAvatar(reader.result);
+          Swal.fire({
+            position: "top-end",
+            icon: "success",
+            text: "Bạn đã cập nhật Avatar thành công!",
+            showConfirmButton: false,
+            timer: 3500,
+          });
         }
       };
       reader.readAsDataURL(files[0]);

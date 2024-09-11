@@ -56,7 +56,7 @@ export const registerService = async (dispatch, account) => {
 export const updateAvatarService = async (dispatch, image) => {
   dispatch(setLoadBackdrop());
   try {
-    const res = await axios.put(ApiUrl("/auth"), { image });
+    const res = await axios.put(ApiUrl("/auth/avatar"), { image });
     if (res.data.success) {
       dispatch(setUserInfo(res.data.user));
       dispatch(setBackdropFinish());
